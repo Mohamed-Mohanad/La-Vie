@@ -6,7 +6,7 @@ import 'package:la_vie_app/core/components/default_button.dart';
 import 'package:la_vie_app/core/components/default_text_form_field.dart';
 import 'package:la_vie_app/core/style/colors/app_colors.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
-import 'package:la_vie_app/cubit/discussion_forumn/discussion_forum_cubit.dart';
+import 'package:la_vie_app/cubit/discussion_forum/discussion_forum_cubit.dart';
 
 
 class CreateNewPostScreen extends StatelessWidget {

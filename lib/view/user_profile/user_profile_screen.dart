@@ -8,11 +8,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:la_vie_app/core/style/colors/app_colors.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
 import 'package:la_vie_app/cubit/user/user_cubit.dart';
-import 'package:la_vie_app/view/user_profile/edit_profile_form.dart';
-import 'package:la_vie_app/view/user_profile/profile_picture.dart';
-import 'package:la_vie_app/view/user_profile/user_points_view.dart';
+import 'package:la_vie_app/view/user_profile/components/edit_profile_form.dart';
+import 'package:la_vie_app/view/user_profile/components/profile_picture.dart';
+import 'package:la_vie_app/view/user_profile/components/user_points_view.dart';
 
-import 'logout_dialog.dart';
+import 'components/logout_dialog.dart';
 
 class UserProfileScreen extends StatefulWidget {
   UserProfileScreen({Key? key}) : super(key: key);
@@ -77,7 +77,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         icon: const Icon(Icons.logout))
                   ],
                 ),
-                body: (cubit.userDataResponse == null)
+                body: (cubit.userModel == null)
                     ? const Center(
                         child: CircularProgressIndicator(
                           color: Colors.white,
@@ -87,9 +87,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         child: Column(
                           children: [
                             ProfilePicture(
-                                url: cubit.userDataResponse!.data.imageUrl),
+                                url: cubit.userModel!.imageUrl!),
                             Text(
-                              "${cubit.userDataResponse!.data.firstName} ${cubit.userDataResponse!.data.lastName}",
+                              "${cubit.userModel!.firstName!} ${cubit.userModel!.lastName!}",
                               style: AppTextStyle.bodyText()
                                   .copyWith(color: Colors.white),
                             ),
@@ -109,8 +109,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       UserPointsView(
-                                          points: cubit.userDataResponse!.data
-                                              .userPoints),
+                                          points: cubit.userModel!
+                                              .userPoints??0),
                                       SizedBox(
                                         height: 10.h,
                                       ),

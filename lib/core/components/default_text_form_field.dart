@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:la_vie_app/core/style/colors/app_colors.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
 
-
 class DefaultTextFormField extends StatefulWidget {
   int? maxLength;
   int? maxLines;
@@ -20,17 +19,17 @@ class DefaultTextFormField extends StatefulWidget {
   double borderSideWidth;
   double enabledBorderRadius;
   Color enabledBorderRadiusColor;
-  final String? validationMsg;
-  final TextInputType textInputType;
-  final IconData? prefixIcon;
-  final IconData? suffixIcon;
-  final Function? onPressSuffixIcon;
-  final Function? onFilledSubmit;
-  final Function? onChange;
-  final Function? validation;
-  final Function? onTap;
-  final String? labelText;
-  final TextEditingController controller;
+  String? validationMsg;
+  TextInputType textInputType;
+  IconData? prefixIcon;
+  IconData? suffixIcon;
+  Function? onPressSuffixIcon;
+  Function(String)? onFilledSubmit;
+  Function(String)? onChange;
+  Function? validation;
+  Function? onTap;
+  String? labelText;
+  TextEditingController controller;
   Color? fillColor;
 
   DefaultTextFormField(
@@ -93,12 +92,12 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       enabled: widget.isEnabled,
       controller: widget.controller,
       keyboardType: widget.textInputType,
-      onFieldSubmitted: (String? value) {
+      onFieldSubmitted: (value) {
         if (widget.onFilledSubmit != null) {
-          widget.onFilledSubmit!();
+          widget.onFilledSubmit!(value);
         }
       },
-      onChanged: (String? value) {
+      onChanged: (value) {
         if (widget.onChange != null) {
           widget.onChange!(value);
         }

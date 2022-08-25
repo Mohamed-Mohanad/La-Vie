@@ -58,7 +58,7 @@ class CartCubit extends Cubit<CartState> {
 
   void removeProduct(CartModel cartModel) {
     emit(CartRemoveProductLoadingState());
-    SqlHelper.deleteRecorde(cartModel.id!).then((value) {
+    SqlHelper.deleteRecorde(cartModel.id).then((value) {
       getAllCartProducts();
       Fluttertoast.showToast(
         msg: "Removed From Cart Successfully",
@@ -77,7 +77,7 @@ class CartCubit extends Cubit<CartState> {
   void getTotalPrice() {
     price = 0;
     for (var element in products) {
-      price += element.price! * element.quantity!;
+      price += element.price * element.quantity;
     }
     emit(CartGetTotalPriceState());
   }

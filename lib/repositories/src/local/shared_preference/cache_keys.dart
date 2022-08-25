@@ -4,6 +4,10 @@ class CacheKeysManger {
   static String getUserTokenFromCache() =>
       CacheHelper.getData(key: 'accessToken') ?? '';
 
-  static int getUserIdFromCache() =>
+  static String getUserIdFromCache() =>
       CacheHelper.getData(key: 'userId') ?? '';
+
+  static String getLastQuizFromCache() =>
+      CacheHelper.getData(key: 'lastQuiz') ?? '';
+
 }

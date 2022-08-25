@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
 import 'package:la_vie_app/models/forum/forum_model.dart';
 
@@ -32,7 +33,9 @@ class ForumCommentsScreen extends StatelessWidget {
                       style: AppTextStyle.bodyText(),
                     ),
                     Text(
-                      comments[index].createdAt.toString(),
+                      DateFormat.yMEd()
+                          .add_jms()
+                          .format(comments[index].createdAt!),
                       style: AppTextStyle.subTitle().copyWith(
                         fontSize: 11.sp,
                       ),

@@ -1,9 +1,9 @@
 class CartModel {
-  String? id;
-  String? name;
-  int? quantity;
-  String? imageUrl;
-  double? price;
+  late final String id;
+  late final String name;
+  late final int quantity;
+  late final String imageUrl;
+  late final double price;
 
   CartModel({
     required this.id,

@@ -1,21 +1,4 @@
 class ForumModel {
-  String? type;
-  String? message;
-  List<Data>? data;
-
-  ForumModel.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    message = json['message'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
-      });
-    }
-  }
-}
-
-class Data {
   String? forumId;
   String? title;
   String? description;
@@ -23,9 +6,9 @@ class Data {
   String? userId;
   List<ForumLikes>? forumLikes;
   List<ForumComments>? forumComments;
-  User? user;
+  Publisher? publisher;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  ForumModel.fromJson(Map<String, dynamic> json) {
     forumId = json['forumId'];
     title = json['title'];
     description = json['description'];
@@ -43,14 +26,16 @@ class Data {
         forumComments!.add(ForumComments.fromJson(v));
       });
     }
-    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    if (json['user'] != null) {
+      publisher = Publisher.fromJson(json['user']);
+    }
   }
 }
 
 class ForumLikes {
   String? forumId;
   String? userId;
-
+  ForumLikes({required this.forumId, required this.userId,});
   ForumLikes.fromJson(Map<String, dynamic> json) {
     forumId = json['forumId'];
     userId = json['userId'];
@@ -62,23 +47,23 @@ class ForumComments {
   String? forumId;
   String? userId;
   String? comment;
-  String? createdAt;
-
+  DateTime? createdAt;
+  ForumComments({required this.userId, required this.forumId, required this.comment, required this.forumCommentId});
   ForumComments.fromJson(Map<String, dynamic> json) {
     forumCommentId = json['forumCommentId'];
     forumId = json['forumId'];
     userId = json['userId'];
     comment = json['comment'];
-    createdAt = json['createdAt'];
+    createdAt = DateTime.parse(json['createdAt']);
   }
 }
 
-class User {
+class Publisher {
   String? firstName;
   String? lastName;
   String? imageUrl;
 
-  User.fromJson(Map<String, dynamic> json) {
+  Publisher.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
     lastName = json['lastName'];
     imageUrl = json['imageUrl'];

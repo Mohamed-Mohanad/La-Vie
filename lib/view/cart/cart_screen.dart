@@ -15,38 +15,35 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SqlHelper.initDB();
     CartCubit.get(context).getAllCartProducts();
-    return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        var cubit = CartCubit.get(context);
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              "My Cart",
-              style: AppTextStyle.appBarText(),
-            ),
-          ),
-          body: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "My Cart",
+          style: AppTextStyle.appBarText(),
+        ),
+      ),
+      body: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          return Padding(
             padding: const EdgeInsets.all(26.0),
             child: state is CartGetProductsLoadingState
                 ? const CircularProgressIndicator.adaptive()
                 : (state is CartAddProductSuccessState ||
                             state is CartGetProductsErrorState) ||
-                        cubit.products.isEmpty
+                        CartCubit.get(context).products.isEmpty
                     ? const NotFoundResultView()
                     : Column(
                         children: [
                           Expanded(
                             child: ListView.separated(
                               itemBuilder: (context, index) => CartItem(
-                                cartModel: cubit.products[index],
+                                cartModel:
+                                    CartCubit.get(context).products[index],
                               ),
                               separatorBuilder: (context, index) => SizedBox(
                                 height: 25.h,
                               ),
-                              itemCount: cubit.products.length,
+                              itemCount: CartCubit.get(context).products.length,
                             ),
                           ),
                           Padding(
@@ -61,7 +58,7 @@ class CartScreen extends StatelessWidget {
                                   style: AppTextStyle.bodyText(),
                                 ),
                                 Text(
-                                  "${cubit.price} EGP",
+                                  "${CartCubit.get(context).price} EGP",
                                   style: AppTextStyle.subTitle().copyWith(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,
@@ -79,9 +76,9 @@ class CartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

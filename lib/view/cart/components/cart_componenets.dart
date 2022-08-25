@@ -58,14 +58,14 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cartModel.name!,
+                  cartModel.name,
                   maxLines: 1,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyle.bodyText().copyWith(fontSize: 12.sp),
                 ),
                 Text(
-                  '${cartModel.price!} EGP',
+                  '${cartModel.price} EGP',
                   textAlign: TextAlign.start,
                   style: AppTextStyle.bodyText().copyWith(
                     color: Colors.green,
@@ -78,10 +78,10 @@ class CartItem extends StatelessWidget {
                   children: [
                     CountQuantityWidget(
                       oTapFunc: () {
-                        int q = cartModel.quantity!;
+                        int q = cartModel.quantity;
                         q++;
                         CartCubit.get(context)
-                            .updateProductQuantity(q, cartModel.id!);
+                            .updateProductQuantity(q, cartModel.id);
                       },
                       isIncrement: true,
                     ),
@@ -97,11 +97,11 @@ class CartItem extends StatelessWidget {
                     ),
                     CountQuantityWidget(
                       oTapFunc: () {
-                        int q = cartModel.quantity!;
+                        int q = cartModel.quantity;
                         if (q > 1) {
                           q--;
                           CartCubit.get(context)
-                              .updateProductQuantity(q, cartModel.id!);
+                              .updateProductQuantity(q, cartModel.id);
                         }
                       },
                       isIncrement: false,
