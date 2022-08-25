@@ -93,8 +93,8 @@ class ProductCubit extends Cubit<ProductState> {
 
   List<Product> searchedProducts = [];
   void searchProducts(String word) {
-    emit(SearchLoadingState());
     searchedProducts.clear();
+    emit(SearchLoadingState());
     for (var element in products) {
       if (element.name!.contains(word)) {
         searchedProducts.add(element);

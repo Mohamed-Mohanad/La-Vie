@@ -106,10 +106,14 @@ class QuizScreen extends StatelessWidget {
                           textColor: AppColors.primaryColor,
                           backgroundColor: AppColors.lightBackGroundColor,
                           text: "Back",
+                          height: 40.h,
+                          borderRadius: 10.r,
                         ),
                       )
                     else
-                      const Expanded(child: SizedBox()),
+                      const Expanded(
+                        child: SizedBox(),
+                      ),
                     SizedBox(
                       width: 10.w,
                     ),
@@ -120,11 +124,15 @@ class QuizScreen extends StatelessWidget {
                             cubit.moveToNextQuestion();
                           },
                           text: "Next",
+                          height: 40.h,
+                          borderRadius: 10.r,
                         ),
                       )
                     ] else ...[
                       Expanded(
                         child: DefaultButton(
+                          height: 40.h,
+                          borderRadius: 10.r,
                           onPress: () {
                             cubit.calculateResult();
                             debugPrint(cubit.correctAnswers.toString());

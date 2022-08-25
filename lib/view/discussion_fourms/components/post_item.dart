@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:la_vie_app/core/components/default_button.dart';
+import 'package:la_vie_app/core/components/default_photo_viewer.dart';
 import 'package:la_vie_app/core/components/default_text_form_field.dart';
 import 'package:la_vie_app/core/enum/forum_type.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
@@ -64,13 +65,27 @@ class PostItem extends StatelessWidget {
                     "${forumModel.description}",
                     style: AppTextStyle.subTitle(),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Image(
-                      image: NetworkImage(
-                        'https://lavie.orangedigitalcenteregypt.com${forumModel.imageUrl}',
+                  GestureDetector(
+                    onTap: () {
+                      NavigationUtils.navigateTo(
+                        context: context,
+                        destinationScreen: HeroPhotoViewRouteWrapper(
+                          imageProvider: NetworkImage(
+                            'https://lavie.orangedigitalcenteregypt.com${forumModel.imageUrl}',
+                          ),
+                          minScale: 0.26,
+                          maxScale: 0.6,
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Image(
+                        image: NetworkImage(
+                          'https://lavie.orangedigitalcenteregypt.com${forumModel.imageUrl}',
+                        ),
+                        fit: BoxFit.cover,
                       ),
-                      fit: BoxFit.cover,
                     ),
                   ),
                   BlocBuilder<DiscussionForumCubit, DiscussionForumState>(
@@ -81,8 +96,11 @@ class PostItem extends StatelessWidget {
                           children: [
                             IconButton(
                               onPressed: () {
-                                DiscussionForumCubit.get(context)
-                                    .likeForum(forumModel.forumId!, forumType, index, forumModel);
+                                DiscussionForumCubit.get(context).likeForum(
+                                    forumModel.forumId!,
+                                    forumType,
+                                    index,
+                                    forumModel);
                               },
                               icon: Icon(
                                 DiscussionForumCubit.get(context)

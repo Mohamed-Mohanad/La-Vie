@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:la_vie_app/core/style/colors/app_colors.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
+import 'package:la_vie_app/core/utils/navigation.dart';
+import 'package:la_vie_app/cubit/main/main_cubit.dart';
 import 'package:la_vie_app/cubit/user/user_cubit.dart';
 import 'package:la_vie_app/view/user_profile/components/edit_profile_form.dart';
 import 'package:la_vie_app/view/user_profile/components/profile_picture.dart';
@@ -60,11 +62,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             },
             builder: (context, state) {
               var cubit = UserCubit.get(context);
-
               return Scaffold(
                 extendBody: true,
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
+                  leading: IconButton(onPressed: (){
+                    NavigationUtils.navigateBack(context: context);
+                    MainCubit.get(context).changeCurrentNavBarItem(2);
+                  }, icon: Icon(Icons.arrow_back),),
                   backgroundColor: Colors.transparent,
                   iconTheme: const IconThemeData(color: Colors.white),
                   systemOverlayStyle: const SystemUiOverlayStyle(
@@ -86,8 +91,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     : Center(
                         child: Column(
                           children: [
-                            ProfilePicture(
-                                url: cubit.userModel!.imageUrl!),
+                            ProfilePicture(url: cubit.userModel!.imageUrl!),
                             Text(
                               "${cubit.userModel!.firstName!} ${cubit.userModel!.lastName!}",
                               style: AppTextStyle.bodyText()
@@ -109,8 +113,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       UserPointsView(
-                                          points: cubit.userModel!
-                                              .userPoints??0),
+                                          points:
+                                              cubit.userModel!.userPoints ?? 0),
                                       SizedBox(
                                         height: 10.h,
                                       ),

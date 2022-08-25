@@ -85,21 +85,24 @@ class DiscussionForumCubit extends Cubit<DiscussionForumState> {
     ).then((value) {
       if (forumType == ForumType.All) {
         if (checkIfUserLikedPost(forumModel)) {
-          allForums[index].forumLikes!.removeWhere((element) => element.userId == CacheKeysManger.getUserIdFromCache());
+          allForums[index].forumLikes!.removeWhere((element) =>
+              element.userId == CacheKeysManger.getUserIdFromCache());
         } else {
           allForums[index].forumLikes!.add(ForumLikes(
               forumId: forumId, userId: CacheKeysManger.getUserIdFromCache()));
         }
-      } else if (forumType == ForumType.My){
+      } else if (forumType == ForumType.My) {
         if (checkIfUserLikedPost(forumModel)) {
-          myForums[index].forumLikes!.removeWhere((element) => element.userId == CacheKeysManger.getUserIdFromCache());
+          myForums[index].forumLikes!.removeWhere((element) =>
+              element.userId == CacheKeysManger.getUserIdFromCache());
         } else {
           myForums[index].forumLikes!.add(ForumLikes(
               forumId: forumId, userId: CacheKeysManger.getUserIdFromCache()));
         }
-      }else{
+      } else {
         if (checkIfUserLikedPost(forumModel)) {
-          searchForums[index].forumLikes!.removeWhere((element) => element.userId == CacheKeysManger.getUserIdFromCache());
+          searchForums[index].forumLikes!.removeWhere((element) =>
+              element.userId == CacheKeysManger.getUserIdFromCache());
         } else {
           searchForums[index].forumLikes!.add(ForumLikes(
               forumId: forumId, userId: CacheKeysManger.getUserIdFromCache()));
@@ -126,20 +129,20 @@ class DiscussionForumCubit extends Cubit<DiscussionForumState> {
               comment: comment,
               forumCommentId: 'dfs662',
             ));
-      } else if (forumType == ForumType.My){
+      } else if (forumType == ForumType.My) {
         myForums[index].forumComments!.add(ForumComments(
               forumId: forumId,
               userId: CacheKeysManger.getUserIdFromCache(),
               comment: comment,
               forumCommentId: 'dfs662',
             ));
-      }else{
+      } else {
         searchForums[index].forumComments!.add(ForumComments(
-          forumId: forumId,
-          userId: CacheKeysManger.getUserIdFromCache(),
-          comment: comment,
-          forumCommentId: 'dfs662',
-        ));
+              forumId: forumId,
+              userId: CacheKeysManger.getUserIdFromCache(),
+              comment: comment,
+              forumCommentId: 'dfs662',
+            ));
       }
       Fluttertoast.showToast(
         msg: "Your Comment Submitted Successfully",
@@ -165,6 +168,8 @@ class DiscussionForumCubit extends Cubit<DiscussionForumState> {
         backgroundColor: Colors.green,
       );
       uploadedPostImage = null;
+      getAllForums();
+      getMyForums();
       emit(DiscussionForumCreatePostSuccessState());
     }).catchError((error) {
       debugPrint(error.toString());

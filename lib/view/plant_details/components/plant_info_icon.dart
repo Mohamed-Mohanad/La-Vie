@@ -17,17 +17,22 @@ class PlantInfoIcon extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
+        SizedBox(
+          width: 70.w,
+          height: 60.h,
+          child: Container(
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
-              color: Colors.black45,
+              color: Colors.black.withOpacity(0.64),
             ),
             child: Icon(
               icon,
               color: Colors.grey.shade300,
-            )),
+            ),
+          ),
+        ),
         SizedBox(
           width: 10.w,
         ),
@@ -40,7 +45,7 @@ class PlantInfoIcon extends StatelessWidget {
             ),
             Text(
               text,
-              style: AppTextStyle.bodyText().copyWith(color: Colors.white),
+              style: AppTextStyle.caption().copyWith(color: Colors.white),
             ),
           ],
         )
