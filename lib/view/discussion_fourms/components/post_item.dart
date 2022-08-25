@@ -122,7 +122,7 @@ class PostItem extends StatelessWidget {
                                 NavigationUtils.navigateTo(
                                   context: context,
                                   destinationScreen: ForumCommentsScreen(
-                                    comments: forumModel.forumComments ?? [],
+                                    forumId: forumModel.forumId!,
                                   ),
                                 );
                               },

@@ -72,6 +72,21 @@ class DiscussionForumCubit extends Cubit<DiscussionForumState> {
     emit(DiscussionForumSearchSuccessState());
   }
 
+  ForumModel? forumModel;
+  void getForumById(String id) {
+    emit(DiscussionForumGetForumByIdLoadingState());
+    DioHelper.getData(
+      url: EndPoints.ALL_FORUMS + '/'+id,
+      token: CacheKeysManger.getUserTokenFromCache(),
+    ).then((value) {
+      forumModel = ForumModel.fromJson(value.data['data']);
+      emit(DiscussionForumGetForumByIdSuccessState());
+    }).catchError((error){
+
+      emit(DiscussionForumGetForumByIdErrorState());
+    });
+  }
+
   void likeForum(
     String forumId,
     ForumType forumType,
