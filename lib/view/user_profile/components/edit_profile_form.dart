@@ -28,7 +28,10 @@ class EditProfileForm extends StatelessWidget {
           firstNameController.text = cubit.userModel!.firstName!;
           lastNameController.text = cubit.userModel!.lastName!;
           emailController.text = cubit.userModel!.email!;
-          addressController.text = cubit.userModel!.address!;
+          if(cubit.userModel!.address != null){
+            addressController.text = cubit.userModel!.address!;
+          }
+
         }
         return Form(
           key: _formKey,

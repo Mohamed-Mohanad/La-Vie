@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:la_vie_app/core/components/default_button.dart';
 import 'package:la_vie_app/core/enum/product_type.dart';

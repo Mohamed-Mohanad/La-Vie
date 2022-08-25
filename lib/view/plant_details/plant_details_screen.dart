@@ -10,6 +10,8 @@ import 'package:la_vie_app/models/products/plant.dart';
 import 'package:la_vie_app/view/blog/blog_screen.dart';
 import 'package:la_vie_app/view/layouts/main/main_layout.dart';
 import 'package:la_vie_app/view/plant_details/components/plant_info_icon.dart';
+import 'package:la_vie_app/cubit/main/main_cubit.dart';
+
 
 class PlantDetailsScreen extends StatelessWidget {
   final Plant plant;
@@ -22,9 +24,10 @@ class PlantDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        MainCubit.get(context).changeCurrentNavBarItem(2);
         NavigationUtils.navigateAndClearStack(
           context: context,
-          destinationScreen: HomeLayout(),
+          destinationScreen: MainLayout(),
         );
         return true;
       },

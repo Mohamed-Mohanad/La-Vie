@@ -9,6 +9,7 @@ import 'package:la_vie_app/core/utils/navigation.dart';
 import 'package:la_vie_app/cubit/product/product_cubit.dart';
 import 'package:la_vie_app/cubit/quiz/quiz_cubit.dart';
 import 'package:la_vie_app/view/cart/cart_screen.dart';
+import 'package:la_vie_app/view/discussion_fourms/discussion_fourms_screen.dart';
 import 'package:la_vie_app/view/home/components/product_grid_view.dart';
 import 'package:la_vie_app/view/quiz/quiz_screen.dart';
 
@@ -74,6 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.amber,
                       ),
                     ),
+                  IconButton(
+                    onPressed: () {
+                      NavigationUtils.navigateTo(context: context, destinationScreen: DiscussionForumsScreen(),);
+                    },
+                    icon: Icon(
+                      Icons.people_outline,
+                      color: Colors.green,
+                    ),
+                  ),
                 ],
               ),
             ),

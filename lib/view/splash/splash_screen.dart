@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Widget destinationScreen;
     if (CacheKeysManger.getUserTokenFromCache() != '') {
-      destinationScreen = HomeLayout();
+      destinationScreen = MainLayout();
     } else {
       destinationScreen = AuthScreen();
     }

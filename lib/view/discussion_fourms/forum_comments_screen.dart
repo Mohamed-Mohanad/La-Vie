@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
 import 'package:la_vie_app/core/utils/navigation.dart';
 import 'package:la_vie_app/cubit/discussion_forum/discussion_forum_cubit.dart';
-import 'package:la_vie_app/models/forum/forum_model.dart';
-import 'package:la_vie_app/repositories/src/local/shared_preference/cache_keys.dart';
 import 'package:la_vie_app/view/discussion_fourms/components/forum_comment.dart';
 
 class ForumCommentsScreen extends StatefulWidget {

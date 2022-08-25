@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:la_vie_app/core/style/texts/app_text_styles.dart';
 import 'package:la_vie_app/models/user/user_model.dart';

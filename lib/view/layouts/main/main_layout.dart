@@ -5,7 +5,7 @@ import 'package:la_vie_app/core/style/colors/app_colors.dart';
 import 'package:la_vie_app/core/utils/navigation.dart';
 import 'package:la_vie_app/cubit/main/main_cubit.dart';
 import 'package:la_vie_app/cubit/product/product_cubit.dart';
-import 'package:la_vie_app/view/discussion_fourms/discussion_fourms_screen.dart';
+import 'package:la_vie_app/view/blog/blog_screen.dart';
 import 'package:la_vie_app/view/home/home_screen.dart';
 import 'package:la_vie_app/view/notifications/notifications_screen.dart';
 import 'package:la_vie_app/view/scan/scan_screen.dart';
@@ -13,17 +13,17 @@ import 'package:la_vie_app/view/user_profile/user_profile_screen.dart';
 
 import 'components/bottom_nav_bar_item.dart';
 
-class HomeLayout extends StatefulWidget {
-  HomeLayout({Key? key}) : super(key: key);
+class MainLayout extends StatefulWidget {
+  MainLayout({Key? key}) : super(key: key);
 
   @override
-  State<HomeLayout> createState() => _HomeLayoutState();
+  State<MainLayout> createState() => _MainLayoutState();
 }
 
-class _HomeLayoutState extends State<HomeLayout> {
+class _MainLayoutState extends State<MainLayout> {
   final List<String> navBarItems = ["leaf", "scanner", "home", "bell", "user"];
   final List<Widget> screens = [
-    const DiscussionForumsScreen(),
+    const BlogScreen(),
     const SizedBox(),
     HomeScreen(),
     const NotificationsScreen(),

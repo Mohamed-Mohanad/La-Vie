@@ -24,7 +24,7 @@ class SignupForm extends StatelessWidget {
       listener: (context, state) {
         if (state is CreateUserSuccessfulState) {
           NavigationUtils.navigateAndClearStack(
-              context: context, destinationScreen: HomeLayout());
+              context: context, destinationScreen: MainLayout());
         } else if (state is CreateUserErrorState) {
           Fluttertoast.showToast(
             msg: state.message!,

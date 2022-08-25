@@ -31,8 +31,8 @@ class BlogItem extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
-              child: Image.asset(
-                "assets/images/blogImg.png",
+              child: Image.network(
+                "https://img.freepik.com/free-psd/green-houseplant-mockup-psd-banner_53876-137827.jpg?w=1380&t=st=1661300452~exp=1661301052~hmac=322e9c03e18a19226627fdef7d290c7a27832075e8154e459b75b9355042e882",
                 height: 100.h,
                 width: 130.w,
                 fit: BoxFit.cover,

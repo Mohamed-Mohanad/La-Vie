@@ -22,7 +22,7 @@ class LoginForm extends StatelessWidget {
         if (state is LoginSuccessfulState) {
           NavigationUtils.navigateAndClearStack(
             context: context,
-            destinationScreen: HomeLayout(),
+            destinationScreen: MainLayout(),
           );
         } else if (state is LoginErrorState) {
           Fluttertoast.showToast(

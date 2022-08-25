@@ -16,7 +16,7 @@ class QuizResultScreen extends StatelessWidget {
           onPressed: () {
             NavigationUtils.navigateAndClearStack(
               context: context,
-              destinationScreen: HomeLayout(),
+              destinationScreen: MainLayout(),
             );
           },
           icon: Icon(Icons.arrow_back),

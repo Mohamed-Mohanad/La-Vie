@@ -8,22 +8,31 @@ class BlogScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Blogs",
-          style: AppTextStyle.appBarText(),
-        ),
-      ),
-      body: ListView.separated(
-        padding: EdgeInsets.all(20),
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (context, index) => BlogItem(),
-        separatorBuilder: (context, index) => SizedBox(
+    return Column(
+      children: [
+        SizedBox(
           height: 20.h,
         ),
-        itemCount: 6,
-      ),
+        Text(
+          "Blogs",
+          textAlign: TextAlign.center,
+          style: AppTextStyle.appBarText(),
+        ),
+        SizedBox(
+          height: 20.h,
+        ),
+        Expanded(
+          child: ListView.separated(
+            padding: EdgeInsets.all(20),
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) => BlogItem(),
+            separatorBuilder: (context, index) => SizedBox(
+              height: 20.h,
+            ),
+            itemCount: 6,
+          ),
+        ),
+      ],
     );
   }
 }
